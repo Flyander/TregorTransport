@@ -4,9 +4,9 @@
 <p>TregorTransport is a set of 3 software (website, mobile application et Windows software) for help a company to manage public transport.</p>
 
 ### Features
- * Mobile application for helps users find the most suitable bus line.
- * Website for buy ticket, see route, download bus ride and manage your account.
- * Windows software for manage your bus driver and make statistics on you bus line.
+ * Mobile application to helps users find the most suitable bus line.
+ * Website to buy ticket, see route, download bus ride and manage your account.
+ * Windows software to manage your bus driver and make statistics on you bus line.
  
  
 # Installation
