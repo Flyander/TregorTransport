@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TregorTransport.Vues.PagePrincipal">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <Image Source="TregorTransportLogo.png" />
-            </StackLayout>
+        <StackLayout BackgroundColor="#070505" >
+            <Image Source="TregorTransportLogo.png" HeightRequest="200" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
