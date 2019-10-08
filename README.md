@@ -1,6 +1,6 @@
 # TregorTransport
 
-### What's TregorLauncher ?
+### What's TregorTransport ?
 <p>TregorTransport is a set of 3 software (website, mobile application et Windows software) for help a company to manage public transport.</p>
 
 ### Features
