@@ -85,7 +85,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidAsset Include="Assets\style.css" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TregorTransport\TregorTransport.csproj">
       <Project>{9011A974-57BE-4A31-AC8C-1D84927B2429}</Project>
