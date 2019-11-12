@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
+using TregorTransport.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -13,15 +14,21 @@ namespace TregorTransport.VuesModeles
     class PrincipalVueModele : INotifyPropertyChanged
     {
         #region Attributs
+        private readonly ApiAuthentification _apiServices = new ApiAuthentification();
+        //private readonly ApiClient _apiServices2 = new ApiClient();
+
+        private string _identifiant;
+        private string _motDePasse;
         #endregion
 
         #region Constructeurs
+        public PrincipalVueModele()
+        {
+            //BoutonCommand = new Command(ActionPage);
+        }
         #endregion
 
         #region Getters/Setters
-        #endregion
-
-        #region Methodes
         private Boolean IsValidUri(String uri)
         {
             try
@@ -35,7 +42,7 @@ namespace TregorTransport.VuesModeles
             }
         }
 
-        public ICommand ClickCommand => new Command<string>(async (url) =>
+        public ICommand ClickCommandURL => new Command<string>(async (url) =>
         {
             try
             {
@@ -53,10 +60,14 @@ namespace TregorTransport.VuesModeles
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine("Erreur lors de la redirection avec l'URL. Log de l'erreur :\n" + ex.Message);
             }
 
         });
+        #endregion
+
+        #region Methodes
+
         #endregion
 
         #region Notification
