@@ -16,9 +16,15 @@ namespace TregorTransport.Modeles
         #region Constructeur
         public Geolocalisation(double latitude, double longitude)
         {
-            this._latitude = latitude;
-            this._longitude = longitude;
+            this.Latitude = latitude;
+            this.Longitude = longitude;
         }
+        #endregion
+
+        #region Getters/Setters
+
+        public double Latitude { get => _latitude; set => _latitude = value; }
+        public double Longitude { get => _longitude; set => _longitude = value; }
         #endregion
 
         #region Methodes
@@ -56,6 +62,14 @@ namespace TregorTransport.Modeles
                 // Unable to get location
             }
             return localisation;
+        }
+
+        public static double CalculateDistance(Geolocalisation param1, Geolocalisation param2)
+        {
+            Location pointA = new Location(param1.Latitude, param1.Longitude);
+            Location pointB = new Location(param2.Latitude, param2.Longitude);
+
+            return Location.CalculateDistance(pointA, pointB, DistanceUnits.Kilometers);
         }
         #endregion
     }
