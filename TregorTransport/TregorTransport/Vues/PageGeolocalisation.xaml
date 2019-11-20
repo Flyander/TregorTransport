@@ -6,10 +6,12 @@
              mc:Ignorable="d"
              x:Class="TregorTransport.Vues.PageGeolocalisation">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BackgroundColor="#070505">
+            <Label Text="{Binding Longitude}" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding Latitude}" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
+
+            <Button Text="Test" WidthRequest="-1" Padding="0" Margin="25,50,25,0" CornerRadius="5" BorderColor="#12C15E" BorderWidth="2" 
+                BackgroundColor="#12C15E" TextColor="#ffff" Command="{Binding BoutonCommandTest}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

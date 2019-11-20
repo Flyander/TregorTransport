@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using TregorTransport.Services;
+using TregorTransport.Vues;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -24,11 +25,13 @@ namespace TregorTransport.VuesModeles
         #region Constructeurs
         public PrincipalVueModele()
         {
+            BoutonCommand = new Command(SwitchPageTest);
             //BoutonCommand = new Command(ActionPage);
         }
         #endregion
 
         #region Getters/Setters
+        public ICommand BoutonCommand { get; }
         private Boolean IsValidUri(String uri)
         {
             try
@@ -67,7 +70,10 @@ namespace TregorTransport.VuesModeles
         #endregion
 
         #region Methodes
-
+        public void SwitchPageTest()
+        {
+            Application.Current.MainPage = new NavigationPage(new PageGeolocalisation());
+        }
         #endregion
 
         #region Notification

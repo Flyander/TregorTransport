@@ -28,7 +28,7 @@ namespace TregorTransport.Modeles
         #endregion
 
         #region Methodes
-        public async Task<Geolocalisation> GetLocalisation()
+        public static async Task<Geolocalisation> GetLocalisation()
         {
             Geolocalisation localisation = null;
             try
