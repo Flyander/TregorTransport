@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -43,22 +42,22 @@ namespace TregorTransport.Modeles
             }
             catch (FeatureNotSupportedException fnsEx)
             {
-                //return "Erreur, le téléphone ne supporte pas la géolocalisation";
+                Debug.Print("Erreur, le téléphone ne supporte pas la géolocalisation.\n Message d'erreur :" + fnsEx);
                 // Handle not supported on device exception
             }
             catch (FeatureNotEnabledException fneEx)
             {
-                // return "Erreur, le téléphone ne supporte pas la géolocalisation";
+                Debug.Print("Erreur, la géolocalisation n'est pas active sur votre téléphone.\n Message d'erreur :" + fneEx);
                 // Handle not enabled on device exception
             }
             catch (PermissionException pEx)
             {
-                //return "Erreur, le téléphone ne supporte pas la géolocalisation";
+                Debug.Print("Erreur, les permissions pour l'utilisation du GPS n'est pas valide.\n Message d'erreur :)" + pEx);
                 // Handle permission exception
             }
             catch (Exception ex)
             {
-                //return "Erreur, le téléphone ne supporte pas la géolocalisation";
+                Debug.Print("Erreur, le téléphone ne supporte pas la géolocalisation.\n Message d'erreur :" + ex);
                 // Unable to get location
             }
             return localisation;

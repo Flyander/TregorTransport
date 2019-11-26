@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TregorTransport.Services;
-using System.Text;
-using Xamarin.Essentials;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using TregorTransport.Modeles;
 using System.Windows.Input;
-using TregorTransport.Vues;
+using TregorTransport.Modeles;
+using Xamarin.Forms;
 
 namespace TregorTransport.VuesModeles
 {
