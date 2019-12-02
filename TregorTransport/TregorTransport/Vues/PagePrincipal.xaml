@@ -8,7 +8,7 @@
     
     <ContentPage.Content>
 
-        <StackLayout BackgroundColor="#070505" >
+        <StackLayout BackgroundColor="#0f0f0f" >
             <Image Source="TregorTransportLogo.png" HeightRequest="200" HorizontalOptions="Center"/>
             <BoxView WidthRequest="1" BackgroundColor="#12C15E" HeightRequest="2" Margin="0,10,0,0" />
             
@@ -17,7 +17,7 @@
                 <Frame.OutlineColor>
                     <OnPlatform x:TypeArguments="Color" Android="#12C15E" iOS="Transparent" />
                 </Frame.OutlineColor>
-                <Entry Text="{Binding Identifiant}" Margin="2" HorizontalTextAlignment="Center" VerticalOptions="Start" BackgroundColor="#070505" TextColor="White"></Entry>
+                <Entry Text="{Binding Identifiant}" Margin="2" HorizontalTextAlignment="Center" VerticalOptions="Start" BackgroundColor="#0f0f0f" TextColor="White"></Entry>
             </Frame>
             
             <Label StyleClass="labelIdentifiant" Text="Mot de passe :" HorizontalOptions="Center" />
@@ -25,7 +25,7 @@
                 <Frame.OutlineColor>
                     <OnPlatform x:TypeArguments="Color" Android="#12C15E" iOS="Transparent" />
                 </Frame.OutlineColor>
-                <Entry Text="{Binding MotDePasse}" IsPassword="True" Margin="2" HorizontalTextAlignment="Center" VerticalOptions="Start" BackgroundColor="#070505" TextColor="White"></Entry>
+                <Entry Text="{Binding MotDePasse}" IsPassword="True" Margin="2" HorizontalTextAlignment="Center" VerticalOptions="Start" BackgroundColor="#0f0f0f" TextColor="White"></Entry>
 
             </Frame>
 
