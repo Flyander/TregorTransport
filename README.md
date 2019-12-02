@@ -1,7 +1,14 @@
 # TregorTransport
 
 ### What's TregorTransport ?
-<p>TregorTransport is a set of 3 software (Website (Symfony), Mobile Application (C# with framework Xamarin) and Windows Software (C# with framework Entity)) for help a company to manage public transport.</p>
+<p>TregorTransport is a set of 3 software :
+ -Website (Symfony)
+ -Mobile Application (C# with framework Xamarin)
+ -Windows Software (C# with framework Entity)
+ We create this project for help a company to manage public transport.</p>
+ 
+ ### Who are you ?
+ <p>We are a group of 3 french students in software development. We call this project "TregorTransport" because we come from a region called "Bretagne".</p>
 
 ### Features
  * Mobile application to helps users find the most suitable bus line.
