@@ -1,13 +1,9 @@
-# TregorTransport
+# TregorTransport Application
 
-### What's TregorTransport ?
-<p>TregorTransport is a set of 3 software (website, mobile application et Windows software) for help a company to manage public transport.</p>
+<p>You can found here a application wrote in C# who can help users to found bus line directly on map API.</p>
 
 ### Features
- * Mobile application to helps users find the most suitable bus line.
- * Website to buy ticket, see route, download bus ride and manage your account.
- * Windows software to manage your bus driver and make statistics on you bus line.
- 
+ * GPS, distance between 2 point on map and account with token.
  
 # Installation
 

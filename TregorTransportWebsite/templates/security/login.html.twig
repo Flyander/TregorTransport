@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+{#
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+#}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page de Connexion</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="/public/css/styleConnexion.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+        
+               
+<div class="login-form">
+        <div class="container">
+                <div class="row">
+                  <div class="p-5 col-md-7 d-flex flex-column justify-content-center">
+                    <img class ="Lelogo"src="public/image/TregorTransportLogo.png" alt="logo" style="width:350px;">
+                    <form action="/examples/actions/confirmation.php" method="post">
+                        <h4 class="modal-title">Connectez vous a votre compte</h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nom d'utilisateur" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Mot de passe" required="required">
+                        </div>
+                        <div class="form-group small clearfix">
+                            <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+                        </div> 
+                        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Connexion">             
+                    </form>			
+                    <div class="text-center small">Vous n'avez pas de compte? <a href="PageInscription.html">Inscrivez vous</a></div>
+                </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>          
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
+{% endblock %}
