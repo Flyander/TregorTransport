@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TregorTransport.VuesModeles;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace TregorTransport.Vues
@@ -15,7 +16,10 @@ namespace TregorTransport.Vues
         public MasterDetailGeoDetail()
         {
             InitializeComponent();
+            
             BindingContext = new GeolocalisationVueModele();
         }
+
+
     }
 }
