@@ -24,10 +24,9 @@ namespace TregorTransport.Vues
             if (item == null)
                 return;
 
-            var page = (Page)Activator.CreateInstance(item.TargetType);
-            page.Title = item.Title;
+            var page = Activator.CreateInstance(item.TargetType);
 
-            Detail = new NavigationPage(page);
+           
             IsPresented = false;
 
             MasterPage.ListView.SelectedItem = null;

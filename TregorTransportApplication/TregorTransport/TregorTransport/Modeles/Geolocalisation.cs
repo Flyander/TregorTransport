@@ -32,7 +32,7 @@ namespace TregorTransport.Modeles
             Geolocalisation localisation = null;
             try
             {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                var request = new GeolocationRequest(GeolocationAccuracy.High);
                 var location = await Geolocation.GetLocationAsync(request);
 
                 if (location != null)

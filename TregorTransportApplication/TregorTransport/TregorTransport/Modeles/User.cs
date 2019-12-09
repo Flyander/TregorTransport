@@ -15,6 +15,7 @@ namespace TregorTransport.Modeles
 
 
         #endregion
+
         #region Constructeurs
         public User(string identifant, string motDePasse)
         {
@@ -25,10 +26,12 @@ namespace TregorTransport.Modeles
         }
 
         #endregion
+
         #region Getters/Setters
         public string username { get => _identifant; set => _identifant = value; }
         public string password { get => _motDePasse; set => _motDePasse = value; }
         #endregion
+
         #region Methodes
         #endregion
     }
