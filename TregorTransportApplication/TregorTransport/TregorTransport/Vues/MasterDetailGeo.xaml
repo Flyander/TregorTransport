@@ -10,7 +10,7 @@
     <pages:MasterDetailGeoMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-        <NavigationPage BarBackgroundColor = "#ed0909" BarTextColor="White" >
+        <NavigationPage BarBackgroundColor = "#0f0f0f" BarTextColor="White" >
       <x:Arguments>
         <pages:MasterDetailGeoDetail/>
       </x:Arguments>
