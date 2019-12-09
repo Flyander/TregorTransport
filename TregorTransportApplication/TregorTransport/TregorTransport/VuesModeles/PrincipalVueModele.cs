@@ -70,7 +70,7 @@ namespace TregorTransport.VuesModeles
         #region Methodes
         public void SwitchPageTest()
         {
-            Application.Current.MainPage = new NavigationPage(new PageGeolocalisation());
+            Application.Current.MainPage = (new MasterDetailGeo());
         }
         #endregion
 
