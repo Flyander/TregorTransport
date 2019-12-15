@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\TregorTransportWebsite"
+    "\\TregorTransportApplication"
   ],
-  "SelectedNode": "\\TregorTransportWebsite\\.env",
+  "SelectedNode": "\\TregorTransportApplication\\TregorTransport.sln",
   "PreviewInSolutionExplorer": false
 }

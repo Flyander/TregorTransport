@@ -5,22 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TregorTransport.Vues.MasterDetailGeoMaster"
-             Title="Master">
+             Title="master">
   <StackLayout>
-    <ListView x:Name="MenuItemsListView"
+        <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}" BackgroundColor="#ffff">
-      <d:ListView.ItemsSource>
-          <x:Array Type="{x:Type x:String}">
-              <x:String>Page 1</x:String>
-              <x:String>Page 2</x:String>
-              <x:String>Page 3</x:String>
-              <x:String>Page 4</x:String>
-              <x:String>Page 5</x:String>
-          </x:Array>
-      </d:ListView.ItemsSource>
-      <ListView.Header>
+            <ListView.Header>
         <Grid BackgroundColor="#12C15E">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
@@ -40,7 +31,10 @@
         <DataTemplate>
           <ViewCell>
             <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-                <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" d:Text="{Binding .}" FontSize="24"/>
+                <StackLayout Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
+                    <Image Source="{Binding Image}" WidthRequest="{Binding Width}" HeightRequest="{Binding Height}"/>
+                    <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" d:Text="{Binding .}" FontSize="24"/>
+                </StackLayout>
             </StackLayout>
           </ViewCell>
         </DataTemplate>

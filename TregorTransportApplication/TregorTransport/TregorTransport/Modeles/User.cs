@@ -22,7 +22,7 @@ namespace TregorTransport.Modeles
             username = identifant;
             password = motDePasse;
 
-            User.CollClasseUser.Add(this);
+           // User.CollClasseUser.Add(this);
         }
 
         #endregion

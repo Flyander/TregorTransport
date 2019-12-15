@@ -18,15 +18,12 @@ namespace TregorTransport.VuesModeles
         #region Constructeur
         public GeolocalisationVueModele()
         {
-            BoutonCommandTest = new Command(AjoutGeo);
             Map = new Xamarin.Forms.Maps.Map();
-            AjoutGeo();
+            StartEmplacement();
         }
         #endregion
 
         #region Getters/Setters
-        public ICommand BoutonCommandTest { get; }
-
         public Xamarin.Forms.Maps.Map Map { get; private set; }
         public double Latitude { get { return laGeolocalisation.Latitude; } set { laGeolocalisation.Latitude = value; OnPropertyChanged(nameof(Latitude)); } }
         public double Longitude { get { return laGeolocalisation.Longitude; } set { laGeolocalisation.Longitude = value; OnPropertyChanged(nameof(laGeolocalisation.Longitude)); } }
@@ -34,7 +31,7 @@ namespace TregorTransport.VuesModeles
         #endregion
 
         #region Methodes
-        public async void AjoutGeo()
+        public async void StartEmplacement()
         {
             var uneGeo = await Geolocalisation.GetLocalisation();
             Latitude = uneGeo.Latitude;
@@ -43,7 +40,6 @@ namespace TregorTransport.VuesModeles
             Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Latitude, Longitude), Distance.FromKilometers(0.5)));
         }
 
-        //public
         #endregion
 
         #region Notification
