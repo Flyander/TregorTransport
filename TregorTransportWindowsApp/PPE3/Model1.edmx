@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tregortransportEntity.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="arret">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="position" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="arret_ligne">
+          <Key>
+            <PropertyRef Name="arret_id" />
+            <PropertyRef Name="ligne_id" />
+          </Key>
+          <Property Name="arret_id" Type="int" Nullable="false" />
+          <Property Name="ligne_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nb_place" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chauffeur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="le_chauffeur_id" Type="int" />
+          <Property Name="nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="statut" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="adresse" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="telephone_c" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="date">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="entreprise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code_siret" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="forfait">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="label" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="quantite_ticket" Type="int" Nullable="false" />
+          <Property Name="prix_forfait" Type="int" Nullable="false" />
+          <Property Name="le_forfait_id" Type="int" />
+        </EntityType>
+        <EntityType Name="ligne">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="les_lignes_id" Type="int" />
+          <Property Name="nom" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="migration_versions">
+          <Key>
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="version" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="executed_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mode_payement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="p">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="les_utilisateurs_id" Type="int" />
+          <Property Name="date_payement" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="les_modes_payements_id" Type="int" />
+          <Property Name="le_forfait_id" Type="int" />
+          <Property Name="mode_payement_id" Type="int" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="180" Nullable="false" />
+          <Property Name="roles" Type="longtext" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="adresse" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="quantite_ticket_restant" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_ligne">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="ligne_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="ligne_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="utilisation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="l_utilisation_id" Type="int" />
+          <Property Name="chauffeur_id" Type="int" />
+          <Property Name="la_date_id" Type="int" />
+          <Property Name="le_bus_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_3A128AB95A438E76">
+          <End Role="ligne" Type="Self.ligne" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="arret_ligne" Type="Self.arret_ligne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ligne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arret_ligne">
+              <PropertyRef Name="ligne_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3A128AB968F1C150">
+          <End Role="arret" Type="Self.arret" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="arret_ligne" Type="Self.arret_ligne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="arret">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arret_ligne">
+              <PropertyRef Name="arret_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_57F0DB83BC57E904">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="ligne" Type="Self.ligne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligne">
+              <PropertyRef Name="les_lignes_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5CA777B88899931">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="chauffeur" Type="Self.chauffeur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chauffeur">
+              <PropertyRef Name="le_chauffeur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B02A3C43854C8321">
+          <End Role="bus" Type="Self.bus" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="le_bus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B02A3C4385C0B3BE">
+          <End Role="chauffeur" Type="Self.chauffeur" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chauffeur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="chauffeur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B02A3C43C5A70D42">
+          <End Role="ligne" Type="Self.ligne" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ligne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="l_utilisation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B02A3C43CAB41110">
+          <End Role="date" Type="Self.date" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="date">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="la_date_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B20A7885B36D2087">
+          <End Role="forfait" Type="Self.forfait" Multiplicity="0..1" />
+          <End Role="payement" Type="Self.payement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="forfait">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payement">
+              <PropertyRef Name="le_forfait_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B20A7885F5DBBA08">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="payement" Type="Self.payement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payement">
+              <PropertyRef Name="les_utilisateurs_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B53220DB5A438E76">
+          <End Role="ligne" Type="Self.ligne" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_ligne" Type="Self.user_ligne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ligne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_ligne">
+              <PropertyRef Name="ligne_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B53220DBA76ED395">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_ligne" Type="Self.user_ligne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_ligne">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BBB5C482B36D2087">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="forfait" Type="Self.forfait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="forfait">
+              <PropertyRef Name="le_forfait_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tregortransportEntityStoreContainer">
+          <EntitySet Name="arret" EntityType="Self.arret" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="arret_ligne" EntityType="Self.arret_ligne" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="bus" EntityType="Self.bus" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="chauffeur" EntityType="Self.chauffeur" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="date" EntityType="Self.date" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="entreprise" EntityType="Self.entreprise" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="forfait" EntityType="Self.forfait" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="ligne" EntityType="Self.ligne" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="migration_versions" EntityType="Self.migration_versions" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="mode_payement" EntityType="Self.mode_payement" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="p" EntityType="Self.p" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="payement" EntityType="Self.payement" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="user_ligne" EntityType="Self.user_ligne" Schema="tregortransport" store:Type="Tables" />
+          <EntitySet Name="utilisation" EntityType="Self.utilisation" Schema="tregortransport" store:Type="Tables" />
+          <AssociationSet Name="FK_3A128AB95A438E76" Association="Self.FK_3A128AB95A438E76">
+            <End Role="ligne" EntitySet="ligne" />
+            <End Role="arret_ligne" EntitySet="arret_ligne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3A128AB968F1C150" Association="Self.FK_3A128AB968F1C150">
+            <End Role="arret" EntitySet="arret" />
+            <End Role="arret_ligne" EntitySet="arret_ligne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_57F0DB83BC57E904" Association="Self.FK_57F0DB83BC57E904">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="ligne" EntitySet="ligne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5CA777B88899931" Association="Self.FK_5CA777B88899931">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="chauffeur" EntitySet="chauffeur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B02A3C43854C8321" Association="Self.FK_B02A3C43854C8321">
+            <End Role="bus" EntitySet="bus" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B02A3C4385C0B3BE" Association="Self.FK_B02A3C4385C0B3BE">
+            <End Role="chauffeur" EntitySet="chauffeur" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B02A3C43C5A70D42" Association="Self.FK_B02A3C43C5A70D42">
+            <End Role="ligne" EntitySet="ligne" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B02A3C43CAB41110" Association="Self.FK_B02A3C43CAB41110">
+            <End Role="date" EntitySet="date" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B20A7885B36D2087" Association="Self.FK_B20A7885B36D2087">
+            <End Role="forfait" EntitySet="forfait" />
+            <End Role="payement" EntitySet="payement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B20A7885F5DBBA08" Association="Self.FK_B20A7885F5DBBA08">
+            <End Role="user" EntitySet="user" />
+            <End Role="payement" EntitySet="payement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B53220DB5A438E76" Association="Self.FK_B53220DB5A438E76">
+            <End Role="ligne" EntitySet="ligne" />
+            <End Role="user_ligne" EntitySet="user_ligne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B53220DBA76ED395" Association="Self.FK_B53220DBA76ED395">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_ligne" EntitySet="user_ligne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BBB5C482B36D2087" Association="Self.FK_BBB5C482B36D2087">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="forfait" EntitySet="forfait" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tregortransportEntity" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="arret">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ligne" Relationship="Self.arret_ligne" FromRole="arret" ToRole="ligne" />
+        </EntityType>
+        <EntityType Name="bus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nb_place" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="utilisation" Relationship="Self.FK_B02A3C43854C8321" FromRole="bus" ToRole="utilisation" />
+        </EntityType>
+        <EntityType Name="chauffeur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="le_chauffeur_id" Type="Int32" />
+          <Property Name="nom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="statut" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telephone_c" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="entreprise" Relationship="Self.FK_5CA777B88899931" FromRole="chauffeur" ToRole="entreprise" />
+          <NavigationProperty Name="utilisation" Relationship="Self.FK_B02A3C4385C0B3BE" FromRole="chauffeur" ToRole="utilisation" />
+        </EntityType>
+        <EntityType Name="date">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="utilisation" Relationship="Self.FK_B02A3C43CAB41110" FromRole="date" ToRole="utilisation" />
+        </EntityType>
+        <EntityType Name="entreprise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code_siret" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="chauffeur" Relationship="Self.FK_5CA777B88899931" FromRole="entreprise" ToRole="chauffeur" />
+          <NavigationProperty Name="ligne" Relationship="Self.FK_57F0DB83BC57E904" FromRole="entreprise" ToRole="ligne" />
+          <NavigationProperty Name="forfait" Relationship="Self.FK_BBB5C482B36D2087" FromRole="entreprise" ToRole="forfait" />
+        </EntityType>
+        <EntityType Name="forfait">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="label" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantite_ticket" Type="Int32" Nullable="false" />
+          <Property Name="prix_forfait" Type="Int32" Nullable="false" />
+          <Property Name="le_forfait_id" Type="Int32" />
+          <NavigationProperty Name="entreprise" Relationship="Self.FK_BBB5C482B36D2087" FromRole="forfait" ToRole="entreprise" />
+          <NavigationProperty Name="payement" Relationship="Self.FK_B20A7885B36D2087" FromRole="forfait" ToRole="payement" />
+        </EntityType>
+        <EntityType Name="ligne">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="les_lignes_id" Type="Int32" />
+          <Property Name="nom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="entreprise" Relationship="Self.FK_57F0DB83BC57E904" FromRole="ligne" ToRole="entreprise" />
+          <NavigationProperty Name="utilisation" Relationship="Self.FK_B02A3C43C5A70D42" FromRole="ligne" ToRole="utilisation" />
+          <NavigationProperty Name="arret" Relationship="Self.arret_ligne" FromRole="ligne" ToRole="arret" />
+          <NavigationProperty Name="user" Relationship="Self.user_ligne" FromRole="ligne" ToRole="user" />
+        </EntityType>
+        <EntityType Name="migration_versions">
+          <Key>
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="version" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="executed_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mode_payement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="p">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="payement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="les_utilisateurs_id" Type="Int32" />
+          <Property Name="date_payement" Type="DateTime" Nullable="false" />
+          <Property Name="les_modes_payements_id" Type="Int32" />
+          <Property Name="le_forfait_id" Type="Int32" />
+          <Property Name="mode_payement_id" Type="Int32" />
+          <NavigationProperty Name="forfait" Relationship="Self.FK_B20A7885B36D2087" FromRole="payement" ToRole="forfait" />
+          <NavigationProperty Name="user" Relationship="Self.FK_B20A7885F5DBBA08" FromRole="payement" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="180" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roles" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantite_ticket_restant" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="payement" Relationship="Self.FK_B20A7885F5DBBA08" FromRole="user" ToRole="payement" />
+          <NavigationProperty Name="ligne" Relationship="Self.user_ligne" FromRole="user" ToRole="ligne" />
+        </EntityType>
+        <EntityType Name="utilisation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="l_utilisation_id" Type="Int32" />
+          <Property Name="chauffeur_id" Type="Int32" />
+          <Property Name="la_date_id" Type="Int32" />
+          <Property Name="le_bus_id" Type="Int32" />
+          <NavigationProperty Name="bus" Relationship="Self.FK_B02A3C43854C8321" FromRole="utilisation" ToRole="bus" />
+          <NavigationProperty Name="chauffeur" Relationship="Self.FK_B02A3C4385C0B3BE" FromRole="utilisation" ToRole="chauffeur" />
+          <NavigationProperty Name="date" Relationship="Self.FK_B02A3C43CAB41110" FromRole="utilisation" ToRole="date" />
+          <NavigationProperty Name="ligne" Relationship="Self.FK_B02A3C43C5A70D42" FromRole="utilisation" ToRole="ligne" />
+        </EntityType>
+        <Association Name="FK_B02A3C43854C8321">
+          <End Role="bus" Type="Self.bus" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="le_bus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5CA777B88899931">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="chauffeur" Type="Self.chauffeur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chauffeur">
+              <PropertyRef Name="le_chauffeur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B02A3C4385C0B3BE">
+          <End Role="chauffeur" Type="Self.chauffeur" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chauffeur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="chauffeur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B02A3C43CAB41110">
+          <End Role="date" Type="Self.date" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="date">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="la_date_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_57F0DB83BC57E904">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="ligne" Type="Self.ligne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligne">
+              <PropertyRef Name="les_lignes_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BBB5C482B36D2087">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="forfait" Type="Self.forfait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="forfait">
+              <PropertyRef Name="le_forfait_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B20A7885B36D2087">
+          <End Role="forfait" Type="Self.forfait" Multiplicity="0..1" />
+          <End Role="payement" Type="Self.payement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="forfait">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payement">
+              <PropertyRef Name="le_forfait_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B02A3C43C5A70D42">
+          <End Role="ligne" Type="Self.ligne" Multiplicity="0..1" />
+          <End Role="utilisation" Type="Self.utilisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ligne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisation">
+              <PropertyRef Name="l_utilisation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B20A7885F5DBBA08">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="payement" Type="Self.payement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payement">
+              <PropertyRef Name="les_utilisateurs_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="arret_ligne">
+          <End Role="ligne" Type="Self.ligne" Multiplicity="*" />
+          <End Role="arret" Type="Self.arret" Multiplicity="*" />
+        </Association>
+        <Association Name="user_ligne">
+          <End Role="ligne" Type="Self.ligne" Multiplicity="*" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="tregortransportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="arret" EntityType="Self.arret" />
+          <EntitySet Name="bus" EntityType="Self.bus" />
+          <EntitySet Name="chauffeur" EntityType="Self.chauffeur" />
+          <EntitySet Name="date" EntityType="Self.date" />
+          <EntitySet Name="entreprise" EntityType="Self.entreprise" />
+          <EntitySet Name="forfait" EntityType="Self.forfait" />
+          <EntitySet Name="ligne" EntityType="Self.ligne" />
+          <EntitySet Name="migration_versions" EntityType="Self.migration_versions" />
+          <EntitySet Name="mode_payement" EntityType="Self.mode_payement" />
+          <EntitySet Name="p" EntityType="Self.p" />
+          <EntitySet Name="payement" EntityType="Self.payement" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="utilisation" EntityType="Self.utilisation" />
+          <AssociationSet Name="FK_B02A3C43854C8321" Association="Self.FK_B02A3C43854C8321">
+            <End Role="bus" EntitySet="bus" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5CA777B88899931" Association="Self.FK_5CA777B88899931">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="chauffeur" EntitySet="chauffeur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B02A3C4385C0B3BE" Association="Self.FK_B02A3C4385C0B3BE">
+            <End Role="chauffeur" EntitySet="chauffeur" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B02A3C43CAB41110" Association="Self.FK_B02A3C43CAB41110">
+            <End Role="date" EntitySet="date" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_57F0DB83BC57E904" Association="Self.FK_57F0DB83BC57E904">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="ligne" EntitySet="ligne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BBB5C482B36D2087" Association="Self.FK_BBB5C482B36D2087">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="forfait" EntitySet="forfait" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B20A7885B36D2087" Association="Self.FK_B20A7885B36D2087">
+            <End Role="forfait" EntitySet="forfait" />
+            <End Role="payement" EntitySet="payement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B02A3C43C5A70D42" Association="Self.FK_B02A3C43C5A70D42">
+            <End Role="ligne" EntitySet="ligne" />
+            <End Role="utilisation" EntitySet="utilisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B20A7885F5DBBA08" Association="Self.FK_B20A7885F5DBBA08">
+            <End Role="user" EntitySet="user" />
+            <End Role="payement" EntitySet="payement" />
+          </AssociationSet>
+          <AssociationSet Name="arret_ligne" Association="Self.arret_ligne">
+            <End Role="ligne" EntitySet="ligne" />
+            <End Role="arret" EntitySet="arret" />
+          </AssociationSet>
+          <AssociationSet Name="user_ligne" Association="Self.user_ligne">
+            <End Role="ligne" EntitySet="ligne" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tregortransportEntityStoreContainer" CdmEntityContainer="tregortransportEntities">
+          <EntitySetMapping Name="arret">
+            <EntityTypeMapping TypeName="tregortransportEntity.arret">
+              <MappingFragment StoreEntitySet="arret">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bus">
+            <EntityTypeMapping TypeName="tregortransportEntity.bus">
+              <MappingFragment StoreEntitySet="bus">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nb_place" ColumnName="nb_place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chauffeur">
+            <EntityTypeMapping TypeName="tregortransportEntity.chauffeur">
+              <MappingFragment StoreEntitySet="chauffeur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="le_chauffeur_id" ColumnName="le_chauffeur_id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="statut" ColumnName="statut" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="telephone_c" ColumnName="telephone_c" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="date">
+            <EntityTypeMapping TypeName="tregortransportEntity.date">
+              <MappingFragment StoreEntitySet="date">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entreprise">
+            <EntityTypeMapping TypeName="tregortransportEntity.entreprise">
+              <MappingFragment StoreEntitySet="entreprise">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code_siret" ColumnName="code_siret" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="forfait">
+            <EntityTypeMapping TypeName="tregortransportEntity.forfait">
+              <MappingFragment StoreEntitySet="forfait">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="quantite_ticket" ColumnName="quantite_ticket" />
+                <ScalarProperty Name="prix_forfait" ColumnName="prix_forfait" />
+                <ScalarProperty Name="le_forfait_id" ColumnName="le_forfait_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ligne">
+            <EntityTypeMapping TypeName="tregortransportEntity.ligne">
+              <MappingFragment StoreEntitySet="ligne">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="les_lignes_id" ColumnName="les_lignes_id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="migration_versions">
+            <EntityTypeMapping TypeName="tregortransportEntity.migration_versions">
+              <MappingFragment StoreEntitySet="migration_versions">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="executed_at" ColumnName="executed_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mode_payement">
+            <EntityTypeMapping TypeName="tregortransportEntity.mode_payement">
+              <MappingFragment StoreEntitySet="mode_payement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="p">
+            <EntityTypeMapping TypeName="tregortransportEntity.p">
+              <MappingFragment StoreEntitySet="p">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payement">
+            <EntityTypeMapping TypeName="tregortransportEntity.payement">
+              <MappingFragment StoreEntitySet="payement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="les_utilisateurs_id" ColumnName="les_utilisateurs_id" />
+                <ScalarProperty Name="date_payement" ColumnName="date_payement" />
+                <ScalarProperty Name="les_modes_payements_id" ColumnName="les_modes_payements_id" />
+                <ScalarProperty Name="le_forfait_id" ColumnName="le_forfait_id" />
+                <ScalarProperty Name="mode_payement_id" ColumnName="mode_payement_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="tregortransportEntity.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="roles" ColumnName="roles" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="quantite_ticket_restant" ColumnName="quantite_ticket_restant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utilisation">
+            <EntityTypeMapping TypeName="tregortransportEntity.utilisation">
+              <MappingFragment StoreEntitySet="utilisation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="l_utilisation_id" ColumnName="l_utilisation_id" />
+                <ScalarProperty Name="chauffeur_id" ColumnName="chauffeur_id" />
+                <ScalarProperty Name="la_date_id" ColumnName="la_date_id" />
+                <ScalarProperty Name="le_bus_id" ColumnName="le_bus_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="arret_ligne" TypeName="tregortransportEntity.arret_ligne" StoreEntitySet="arret_ligne">
+            <EndProperty Name="ligne">
+              <ScalarProperty Name="id" ColumnName="ligne_id" />
+            </EndProperty>
+            <EndProperty Name="arret">
+              <ScalarProperty Name="id" ColumnName="arret_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="user_ligne" TypeName="tregortransportEntity.user_ligne" StoreEntitySet="user_ligne">
+            <EndProperty Name="ligne">
+              <ScalarProperty Name="id" ColumnName="ligne_id" />
+            </EndProperty>
+            <EndProperty Name="user">
+              <ScalarProperty Name="id" ColumnName="user_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

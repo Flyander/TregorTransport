@@ -24,9 +24,9 @@ namespace TregorTransport.VuesModeles
             }
             MenuItems = new ObservableCollection<MasterDetailGeoMasterMenuItem>(new[]
             {
-                new MasterDetailGeoMasterMenuItem { Id = 0, Title = "Mon compte", Image = "iconUser.png", Width = "32", Height = "32" },
-                new MasterDetailGeoMasterMenuItem { Id = 1, Title = "Mes trajets", Image = "iconBus.png", Width = "32", Height = "32" },
-                new MasterDetailGeoMasterMenuItem { Id = 2, Title = "Réserver un trajet", Image = "iconTicket.png", Width = "35", Height = "35" },
+                new MasterDetailGeoMasterMenuItem { Id = 0, Title = "Mon compte", Image = "iconUser.png", Width = "34", Height = "34" },
+                new MasterDetailGeoMasterMenuItem { Id = 1, Title = "Mes trajets", Image = "iconBus.png", Width = "34", Height = "34" },
+                new MasterDetailGeoMasterMenuItem { Id = 2, Title = "Réserver un trajet", Image = "iconTicket.png", Width = "37", Height = "37" },
 
             });
         }

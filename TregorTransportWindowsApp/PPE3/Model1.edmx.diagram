@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bab6fab977dd4b8f9a7aaf9eec770a5d" Name="Diagram1">
+        <EntityTypeShape EntityType="tregortransportEntity.arret" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.bus" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.chauffeur" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.date" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.entreprise" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.forfait" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.ligne" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.migration_versions" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.mode_payement" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.p" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.payement" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.user" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tregortransportEntity.utilisation" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="tregortransportEntity.FK_B02A3C43854C8321" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_5CA777B88899931" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_B02A3C4385C0B3BE" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_B02A3C43CAB41110" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_57F0DB83BC57E904" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_BBB5C482B36D2087" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_B20A7885B36D2087" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_B02A3C43C5A70D42" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.FK_B20A7885F5DBBA08" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.arret_ligne" ManuallyRouted="false" />
+        <AssociationConnector Association="tregortransportEntity.user_ligne" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

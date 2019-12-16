@@ -24,14 +24,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
           </Grid.RowDefinitions>
-          <Label Grid.Column="1" Grid.Row="2" Text="{Binding Utilisateur}" Style="{DynamicResource SubtitleStyle}" HorizontalTextAlignment="Center" TextColor="White"/>
+                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding Utilisateur}" Style="{DynamicResource SubtitleStyle}" HorizontalTextAlignment="Center" FontSize="28" TextColor="White"/>
         </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
             <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-                <StackLayout Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" Padding="0" Spacing="7" HorizontalOptions="FillAndExpand" >
                     <Image Source="{Binding Image}" WidthRequest="{Binding Width}" HeightRequest="{Binding Height}"/>
                     <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" d:Text="{Binding .}" FontSize="24"/>
                 </StackLayout>
