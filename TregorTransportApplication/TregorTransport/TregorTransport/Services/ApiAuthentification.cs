@@ -29,10 +29,10 @@ namespace TregorTransport.Services
                 var response = await client.PostAsync(Constantes.BaseApiAddress + "api/login_check", jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
 
-                if (content.Contains("token"))
+                if (content.Contains("token")) // If the result have "token" in the string
                 {
                     Tokens token = JsonConvert.DeserializeObject<Tokens>(content);
-                    this.StockerMotDePasse(token.Token);
+                    this.StockerMotDePasse(token.Token); // save token in device
                     User.CollClasseUser.Add(modelData);
                     return true;
                 }

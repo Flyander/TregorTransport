@@ -149,7 +149,6 @@ namespace TregorTransport.VuesModeles
         #endregion
 
         #region Methodes
-
         public void TryConnect()
         {
             Task.Run(async () =>

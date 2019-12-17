@@ -4,7 +4,7 @@ using System.Windows.Input;
 using TregorTransport.Modeles;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+using xMap = Xamarin.Forms.Maps; // using xMap for counter bug with Xmarin.Essentials.Map and Xamarin.Forms.Maps.Map
 
 namespace TregorTransport.VuesModeles
 {
@@ -18,26 +18,26 @@ namespace TregorTransport.VuesModeles
         #region Constructeur
         public GeolocalisationVueModele()
         {
-            Map = new Xamarin.Forms.Maps.Map();
+            Map = new xMap.Map();
             StartEmplacement();
         }
         #endregion
 
         #region Getters/Setters
-        public Xamarin.Forms.Maps.Map Map { get; private set; }
+        public xMap.Map Map { get; private set; }
         public double Latitude { get { return laGeolocalisation.Latitude; } set { laGeolocalisation.Latitude = value; OnPropertyChanged(nameof(Latitude)); } }
         public double Longitude { get { return laGeolocalisation.Longitude; } set { laGeolocalisation.Longitude = value; OnPropertyChanged(nameof(laGeolocalisation.Longitude)); } }
 
         #endregion
 
         #region Methodes
-        public async void StartEmplacement()
+        public async void StartEmplacement() // start map on user postion
         {
             var uneGeo = await Geolocalisation.GetLocalisation();
             Latitude = uneGeo.Latitude;
             Longitude = uneGeo.Longitude;
             Map.IsShowingUser = true;
-            Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Latitude, Longitude), Distance.FromKilometers(0.5)));
+            Map.MoveToRegion(xMap.MapSpan.FromCenterAndRadius(new xMap.Position(Latitude, Longitude), xMap.Distance.FromKilometers(0.5)));
         }
 
         #endregion

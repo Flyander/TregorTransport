@@ -29,7 +29,7 @@
 
             </Frame>
 
-            <Button Text="Envoyer" WidthRequest="-1" Padding="0" Margin="25,50,25,0" CornerRadius="5" BorderColor="#12C15E" BorderWidth="2" 
+            <Button Text="Connexion" WidthRequest="-1" Padding="0" Margin="25,50,25,0" CornerRadius="5" BorderColor="#12C15E" BorderWidth="2" 
                 BackgroundColor="#12C15E" TextColor="#ffff" Command="{Binding BoutonCommand}" IsVisible="{Binding IsBusyReverse}"/>
 
             <Grid>
@@ -38,7 +38,7 @@
             <Label StyleClass="labelIdentifiant" Text="L'email ou le mot de passe est incorrect" HorizontalOptions="Center" TextColor="Red" Margin="0,30,0,0" IsVisible="{Binding IsBusyError}"/>
             <BoxView WidthRequest="1" BackgroundColor="#12C15E" HeightRequest="2" Margin="0,60,0,0" />
 
-            <Label TextColor="Black" Text="Pas encore membre ? Inscrivez-vous" HorizontalOptions="Center" Margin="0,20,0,0">
+            <Label TextColor="Black" Text="Pas encore membre ? Inscrivez-vous" FontSize="20" HorizontalOptions="Center" Margin="0,20,0,0">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ClickCommandURL}" CommandParameter="127.0.0.1:8000/register"/>
                 </Label.GestureRecognizers>
